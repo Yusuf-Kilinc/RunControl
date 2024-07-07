@@ -5,6 +5,8 @@ using UnityEngine;
 public class Characther : MonoBehaviour
 {
 
+    public GameManager Manager;
+
     private void FixedUpdate()
     {
         transform.Translate(Vector3.forward * .5f * Time.deltaTime);
@@ -33,4 +35,13 @@ public class Characther : MonoBehaviour
             }
         }   
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "X2" || other.name == "+3"|| other.name == "-4" || other.name == "/2")
+            Manager.AdamYonetimi(other.name, other.transform);
+        
+    }
+
+
 }
