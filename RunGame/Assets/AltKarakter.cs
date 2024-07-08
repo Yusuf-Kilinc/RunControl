@@ -7,7 +7,6 @@ public class AltKarakter : MonoBehaviour
 {
     GameObject Target;
     NavMeshAgent Agent;
-    // Start is called before the first frame update
     void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
@@ -15,22 +14,17 @@ public class AltKarakter : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         Agent.SetDestination(Target.transform.position);
     }
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("IgneliKutu"))
         {
-            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().AnlikKarakterSayisi--;
+            GameManager.AnlikKarakterSayisi--;
             gameObject.SetActive(false);
 
         }
     }
-
-
-
 }
